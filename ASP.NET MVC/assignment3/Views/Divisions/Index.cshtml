@@ -1,0 +1,24 @@
+﻿@model IEnumerable<assignment3.Models.Division>
+
+@{
+    ViewData["Title"] = "Divisions";
+}
+
+<h1>Divisions</h1>
+
+<h2>HASC features the following divisions.</h2>
+
+<table class="table">
+    
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DivisionName)
+            </td>           
+        </tr>
+}
+    </tbody>
+</table>
+
+<p>Age is determined as of March 1 of each year.</p>

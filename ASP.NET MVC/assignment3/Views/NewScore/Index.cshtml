@@ -1,0 +1,57 @@
+﻿@model IEnumerable<assignment3.Models.Game>
+
+@{
+    ViewData["Title"] = "Enter a New Score";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<form asp-action="Index" method="get">
+    <p>
+        Referee:
+        <select asp-for="@Model.FirstOrDefault().RefereeId" asp-items="@ViewBag.RefereeId" onchange="submit()"></select>
+        | <a asp-action="Index">All Games</a>
+    </p>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GameDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Field)
+            <th>
+                @Html.DisplayNameFor(model => model.HomeTeam)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.AwayTeam)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Field)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomeTeam.TeamName)
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.AwayTeam.TeamName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.GameId">Edit</a>           
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
